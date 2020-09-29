@@ -1,0 +1,30 @@
+1. Insert
+db.Employee.insert({id:1 , Empname:"ABC", Emp_dep:"CSE", salary:"20000"})
+db.Employee.update({id:2 , Empname:"PQR", Emp_dep:"CSE"},{$set:{salary:"30000"}},{upsert:false})
+db.Employee.update({id:3 , Empname:"xyz" , Emp_dep:"ECE"},{$set:{salary:"10000"}},{upsert:true})
+db.Employee.save({id:4 , Empname:"AB" , Emp_dep:"CV" ,salary:"5000"})
+
+db.Department.insert({id:"123" , name:"CSE" })
+db.department.update({id:"234"} , {$set:{name:"ECE"}} , {upsert:true})
+db.department.save({id:"34" , name:"CV"})
+
+2. Update
+
+db.Employee.update({id:2} , {$set:{emp_age:"38"}})
+
+3. Remove
+
+db.Employee.remove({id:1},{$unset:{salary:"20000"}})
+
+4. Select all doc.
+ 
+	db.Employee.find().pretty()
+	db.Department.find().pretty()
+
+
+5.  select only empname and Department number
+
+	db.Employee.find({emp_dept:{$in['1','2','3','4']}}).pretty()
+
+6.  
+	db.Employee.find({Emp_name:/^A/}).pretty()
